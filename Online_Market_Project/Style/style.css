@@ -1,0 +1,152 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap');
+
+
+header{
+    width: 100%;
+    display: flex;
+    background-color: rgb(134, 134, 201);
+    padding: 10px;
+    margin: 0;
+    position: fixed;top: 0;
+    z-index: 10;
+}
+.bare_recherche{
+    display: flex;
+    margin-left: 10%;
+    margin-right: 5%;
+    width: 50%;
+}
+.bare_recherche input{
+    border-radius: 5px;
+}
+.menu{
+    width: 30%;
+    margin-top: -1.5%;
+}
+header .menu ul{
+    display: flex;
+    list-style-type: none;
+    
+}.menu ul li {
+    margin-right: 15%;
+    font-size: 10px;
+}
+.menu ul li i{
+    font-size: 35px;
+}
+.menu ul li span{
+    color: white;background-color: red;
+    position: absolute;border-radius: 50%;
+    top: 4%;
+    z-index: 10;
+    font-size: medium;font-weight: 600;
+    width: 1%;text-align: center;
+}
+
+/*Début du css pour la partie pub   */
+.container_pub{
+    width: 100%;   position: relative;    
+    height: 200px;  top: 100px;
+    display: flex;  justify-content: center;
+}.container_pub #pub_3{
+    animation: anime_pub2 5s linear infinite normal;
+}
+.container_pub #pub_1{
+    height: auto;width: auto;
+    animation: anime_pub 5s linear infinite normal;
+}
+@keyframes anime_pub {
+    25%{
+         transform: translateX(-150%);
+    }
+    
+}@keyframes anime_pub2 {
+    25%{
+         transform: translateX(150%);
+    }
+    
+}
+/*Début du css pour la partie catégorie   */
+.container_categorie{
+    position: relative; top: 150px;
+    border: solid rgb(134, 134, 201) 2px;
+    border-radius: 100px;
+}.container_categorie .titre_cat{
+    justify-content: center;
+    text-align: center;
+}.titre_cat h1{
+    font-family: "Dancing Script", cursive;
+    font-size: 40px;margin-bottom: 0;
+}.cat_1{
+    width: 20%;margin-left: 5%;
+    border-radius: 8px; cursor: pointer;
+}.cat_1:hover{
+    background-color: aquamarine;
+}
+.cat_1 img {
+    width: 90%;margin-left: 5%;margin-top: 2%;
+     border-radius: 50%; border: solid rgb(134, 134, 201);
+}.cat_1 h1{
+    font-family: "Dancing Script", cursive;
+    text-align: center;font-size: 15px;
+    background-color: aquamarine;
+    width: 90%;margin-left: 5%;
+}.ligne_cat{
+    animation: anime_ligne_cat 2s linear infinite normal;
+}
+@keyframes anime_ligne_cat {
+    0%{transform: scaleX(10%);}
+    100%{transform: scaleX(50%);}
+}.voir_plus{
+    display: flex;justify-self: center;
+    cursor: pointer;
+    border:solid rgb(134, 134, 201) ;
+    border-radius: 100px;
+}
+
+
+@media screen and (max-width:970px) {
+    .bare_recherche{
+    margin-left: 5%;
+    margin-right: 0%;
+    }
+}
+
+@media screen and (max-width:750px) {
+    .bare_recherche{
+    margin-left: 1%;    
+    }
+    .menu{
+        margin-left: -3%;
+    }
+    .menu ul li i{
+    font-size: 25px;
+    }
+
+    .container_pub{
+        overflow-x: scroll;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+         white-space: nowrap;
+    }.slider {display: flex;width: 300%;}
+    .container_pub img{
+        flex: 0 0 auto;object-fit: cover;
+        scroll-snap-align: start;
+    }.container_pub #pub_1{
+    animation: none;
+    }.container_pub #pub_2{
+        margin-left: 2%;margin-right: 2%;
+    }.container_pub #pub_3{
+    animation: none;
+    }
+}
+    
+
+
+@media screen and (max-width:580px) {
+    
+    .menu ul li {
+        font-size: 0;
+    }
+
+}
