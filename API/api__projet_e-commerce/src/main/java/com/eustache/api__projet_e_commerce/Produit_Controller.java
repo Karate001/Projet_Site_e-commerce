@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import jakarta.persistence.*;
+import java.util.List;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 /**
  *
  * @author congo
@@ -25,5 +27,9 @@ public class Produit_Controller {
     public Produit add_produit(@RequestBody Produit produit){
         return repository_Prodduit.save(produit);
     }
-    
+    @GetMapping
+    @ResponseBody
+    public List<Produit> get_all_produits(){
+       return repository_Prodduit.findAll();
+    }
 }
