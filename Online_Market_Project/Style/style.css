@@ -18,6 +18,12 @@
     scroll-behavior: smooth;
     color: var(--text-color);
 }
+header {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    z-index: 10000;
+}
 /*premier-navigateur-top*/
 .navtop{
     display: flex;
@@ -97,9 +103,10 @@ nav{
     align-items: center;
     background: var(--bg-color);
     padding:0 20px;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
+}
+nav,
+nav * {
+  overflow: visible !important;
 }
 /*Logo UTOPIA*/
 .logo{
@@ -415,44 +422,12 @@ gap: 0.5rem;
 }
 
 /*Début du css pour la partie pub   */
-.container_pub_slider{
-    width:100%;   position: relative;    
-    height: 10rem ; top: 100px;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    margin:5rem 0;
-    gap: 1rem;
-    place-content: center;
-    position: relative;
-    right: 5rem;
-}.container_pub_slider img:nth-child(3){
+.container_pub_slider img:nth-child(3){
     animation: anime_pub2 100s infinite normal ;
     clip-path: circle(50% at center 50%);
     width: 50%;
     position: relative;
     left: 11rem;
-}
-.container_pub_slider img:nth-child(1){
-    animation: anime_pub 100s infinite normal;
-    clip-path: circle(50% at center 50%);
-    width: 50%;
-    position: relative;
-    left: 13rem;
-}
-.container_pub_slider img:nth-child(2){
-    border-radius: 20%;
-    clip-path: inset(0 10% 0 0 round 0 30% 0);
-}
-@keyframes anime_pub {
-    25%{
-         transform: rotate(360deg);  
-    }
-    
-}@keyframes anime_pub2 {
-    25%{
-         transform: rotate(360deg);
-    }
-    
 }
 /*Début du css pour la partie catégorie   */
 .container_categorie{

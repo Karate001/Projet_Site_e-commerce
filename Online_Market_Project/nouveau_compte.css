@@ -29,7 +29,7 @@ body{
  flex-direction: column;
  justify-content: center;
  align-items: center;
- padding: 0 5rem;
+ padding:min(5rem, 8%);
  height: 80%;
  background:rgba(134, 134, 201, 0.5);
  border-radius: 30%;
@@ -39,17 +39,19 @@ body{
  background-repeat: no-repeat;
  background-size: cover;
  backdrop-filter: blur(10px);
+ width: 80%;
 }
 .connexion-container h2{
     font-size: clamp(1rem,calc(1.5rem + 0.5vw), 3rem);
     text-align: center;
+    white-space: nowrap;
 }
 form{
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
     text-align: center;
-    padding: min(5rem, 8%);
+    padding: min(1rem, 8%);
     width: 100%;
 }
 form a{
@@ -84,21 +86,4 @@ form input{
 }
 form input::placeholder{
     color: var(--bg2-);
-}
-
-.section_compte{
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    width: 100%;
-    gap: 1rem;
-}
-.section_compte  small{
-    transition: color .5s;
-    font-size: clamp(0.8rem, (1vw + 0.5rem), 0.9rem);
-
-    white-space: nowrap;
-}
- .section_compte  small:hover{
-    color: blue;
 }
