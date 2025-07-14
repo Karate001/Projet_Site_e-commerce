@@ -415,10 +415,43 @@ gap: 0.5rem;
 .offre-spécial .right h2{
     font-size:clamp(0.7rem, calc(0.6rem + 3vw), 2.3rem) ;
 }
-.offre-spécial .right p{
+.offre-spécial .right h2{
     font-size: clamp(1rem, calc(0.8rem + 1vw), 1.7rem);
     letter-spacing: 3px;
     color: #fff;
+    position: relative;
+}
+.offre-spécial .right h2::before{
+    content: attr(animation);
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 0;
+    background: rgba(127, 255, 212, 0.263);
+    -webkit-text-stroke: 2px 0vw #383d52;
+    border: 1.5px solid aquamarine;
+    animation: animation 4s steps(12) infinite;
+}
+@keyframes animation{
+    0%, 10%, 100%{
+        left: 100%;
+    }
+    70%, 90%{
+        left: 0;
+    }
+}
+
+@keyframes animate {
+    40%, 60%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+#animation{
+    animation: animate 12s linear infinite;
 }
 
 /*Début du css pour la partie pub   */
