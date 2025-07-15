@@ -236,10 +236,7 @@ display: grid;
 grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
 gap: 0.5rem;
 }
-.container_pub{
-    background:var(--bg-color);
-    padding: min(2rem, 8%);
-}
+
 .categories{
     display: flex;
     margin: 0.5rem 0;
@@ -443,30 +440,30 @@ gap: 0.5rem;
 }
 
 @keyframes animate {
-    40%, 60%{
-        opacity: 0;
-    }
-    100%{
+    0%, 10%, 100%{
         opacity: 1;
+    }
+    70%, 90%{
+        opacity: 0;
     }
 }
 #animation{
-    animation: animate 12s linear infinite;
+    animation: animate 4s steps(12) infinite;
+}
+.offre-spécial .right p{
+    font-size: clamp(0.5rem, calc(1rem + 1vw), 1.6rem);
+    color: var(--color-bg);
+    text-align: center;
+
 }
 
-/*Début du css pour la partie pub   */
-.container_pub_slider img:nth-child(3){
-    animation: anime_pub2 100s infinite normal ;
-    clip-path: circle(50% at center 50%);
-    width: 50%;
-    position: relative;
-    left: 11rem;
-}
+
 /*Début du css pour la partie catégorie   */
 .container_categorie{
     position: relative; top: 150px;
     border: solid rgb(134, 134, 201) 2px;
     border-radius: 100px;
+    width: calc(100% +2vw);
 }.container_categorie .titre_cat{
     justify-content: center;
     text-align: center;
@@ -504,7 +501,7 @@ gap: 0.5rem;
     border:solid rgb(134, 134, 201) ;
     border-radius: 100px;
     padding: min(0.5rem, 8%);
-    margin: 1rem 0;
+    margin: calc(1rem + 2vw);
     position: relative;
     overflow: hidden;
 }
@@ -537,7 +534,7 @@ gap: 0.5rem;
 }
 .contact-box .contact .surnous-left{
     background:rgba(134, 134, 201, 0.463);
-    padding:calc(4.5rem + 3vw);
+    padding:min(10.5rem, 15%);
     width: 100%;
     box-shadow: 3px 3px 9px #2121218e ;
     border-radius: 100px;
@@ -559,7 +556,7 @@ gap: 0.5rem;
 }
 .contact-box .contact .contacter-right{
     background: rgba(134, 134, 201, 0.463);
-    padding: min(5rem, 20%);
+    padding:min(3.5rem, 15%);
     width: 100%;
     box-shadow: 3px 3px 9px #2121218e ;
     border-radius: 100px;  
@@ -662,13 +659,45 @@ textarea::placeholder{
     background-position: center;
     background-size: cover;
 }
-.adresse i{
-    background: rgba(0,0,0,0.4);
-    padding: min(0.3rem, 9%);
+.adresse .reseaux_sociaux a i{
+    transition: color 0.7s;
+}
+.adresse .reseaux_sociaux a{
+    background: #fff;
+    padding:0.5em;
     border-radius: 50%;
     color: #111111;
     position: relative;
+    top: 3rem;
+    flex-shrink: 0;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.256);
+    height: 32px;
+    width: 32px;
+    transition: .7s;
 }
+.adresse .reseaux_sociaux a::before{
+    content: attr(data-social);
+    position: absolute;
+    background: black;
+    color: #fff;
+    padding: 0.5em 1em;
+    border-radius: 100px;
+    box-shadow:0 5px 10px rgba(0, 0, 0, 0.256);
+    transform: translateY(-65px) rotate(25deg);
+    opacity: 0;
+    transition: .2s;
+}
+.adresse .reseaux_sociaux a:hover::before{
+    transform: translateY(-45px) rotate(0);
+    opacity: 1;
+}
+.adresse .reseaux_sociaux a:hover{
+    background: #0a090f;
+}
+.adresse .reseaux_sociaux a i:hover{
+    color: #fff;
+}
+
 
 
 
@@ -823,3 +852,43 @@ footer{
     }
 
 }
+@media screen and (max-width:475px){
+    .offre-spécial .left{
+        padding:calc(3em + 2vw) ;
+        clip-path: inset(10px 30px round 0 10%);
+    }
+        .offre-spécial{
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-start;
+    }
+    .offre-spécial .left h2:nth-child(1){
+        font-size: clamp(0.7rem, calc(0.5rem + 2.5vw), 2.5rem);
+        white-space: nowrap;
+        margin-bottom: 1rem;
+    }
+    .offre-spécial .right  p:nth-child(2){
+      width: 20rem;
+    }
+   
+    .informations-contents{
+    display: grid;
+    place-items: center;
+    flex-direction: column;
+    }
+       .info-contents{
+    position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+      .infos{
+       display: flex;
+       flex-direction: column;
+       justify-content: center;
+       align-items: center; 
+       text-align: center;
+      }
+}
+ 
