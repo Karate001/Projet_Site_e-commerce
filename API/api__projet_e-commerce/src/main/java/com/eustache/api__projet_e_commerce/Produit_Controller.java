@@ -11,13 +11,17 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import java.util.List;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
 /**
  *
  * @author congo
  */
-@Controller
+@RestController
 @RequestMapping("/info_produit/produits")
 @CrossOrigin(origins = "*")
 public class Produit_Controller {
@@ -28,8 +32,17 @@ public class Produit_Controller {
         return repository_Prodduit.save(produit);
     }
     @GetMapping
-    @ResponseBody
     public List<Produit> get_all_produits(){
-       return repository_Prodduit.findAll();
+        List<Produit> produits = repository_Prodduit.findAll();
+       return produits;
+    }
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> delete_produit(@PathVariable Integer id){
+        if (!repository_Prodduit.existsById(id)) {
+            return ResponseEntity.notFound().build();
+        }else{
+            repository_Prodduit.deleteById(id);
+            return ResponseEntity.ok("Produit supprimé");
+        }
     }
 }

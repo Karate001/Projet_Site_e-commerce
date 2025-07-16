@@ -823,3 +823,18 @@ footer{
     }
 
 }
+
+
+
+/*Ici je stylise la section produit*/
+.container_produits{
+    display: grid;
+    margin-top: 20%;
+    border: solid rgba(134, 134, 201, 0.463);
+}
+.container_produits div{
+    margin-left: 2%;
+}
+#prod img {
+    width: 40%;
+}
