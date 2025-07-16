@@ -96,7 +96,6 @@ form input::placeholder{
 .section_compte  small{
     transition: color .5s;
     font-size: clamp(0.8rem, (1vw + 0.5rem), 0.9rem);
-
     white-space: nowrap;
 }
  .section_compte  small:hover{
