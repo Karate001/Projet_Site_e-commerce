@@ -17,7 +17,6 @@
     list-style-type: none;
     scroll-behavior: smooth;
     color: var(--text-color);
-<<<<<<< Updated upstream
 }
 header {
     position: -webkit-sticky;
@@ -25,10 +24,6 @@ header {
     top: 0;
     z-index: 10000;
 }
-=======
-}header{width: 100%;}
-body{transform-origin:top left ;}
->>>>>>> Stashed changes
 /*premier-navigateur-top*/
 .navtop{
     display: flex;
@@ -896,4 +891,17 @@ footer{
        text-align: center;
       }
 }
- 
+
+/*Style du container produit*/
+.container_produits{
+    display: grid;
+    grid-template-columns: auto auto auto;
+    row-gap: 5%;
+    width: 95%;
+    border: solid rgba(134, 134, 201, 0.463);
+    margin-left: 2.5%;margin-right: 2.5%;
+}
+#prod img {
+    width: 30%;
+    height: auto;
+}
