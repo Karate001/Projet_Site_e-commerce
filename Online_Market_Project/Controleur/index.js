@@ -34,10 +34,7 @@ document.addEventListener('DOMContentLoaded',
         
         for (let index = nbr_prod-1; index >= 0; index--) {
             
-                const prod_aleatoire = Math.floor(Math.random()*(index+1));
-                
-            
-
+                const prod_aleatoire = Math.floor(Math.random()*(index+1));                          
                 [table_produits[index],table_produits[prod_aleatoire]]=[table_produits[prod_aleatoire],table_produits[index]];
                     
             
@@ -56,13 +53,23 @@ document.addEventListener('DOMContentLoaded',
                 img_prod.src =table_produits[i].url_image
                 nom_prod.innerText =table_produits[i].nom_produit
                 prix_prod.innerText= "Prix: "+table_produits[i].prix_produit+"$";
+                
         }
 
     })
    
     );
 
-//Méthode qui ajoute un produit
+ /*Quend on clique sur un produit page qui contient tous le les info 
+                sur un produit et le bouton commander*/
+function vers_info_prod() {
+    table_produits_dom.forEach(p => {
+        
+    });
+}
+
+
+    //Méthode qui ajoute un produit
 /*
 fetch("http://localhost:8080/info_produit/produits", {
         method: "POST",
