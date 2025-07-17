@@ -10,52 +10,8 @@
     <link rel="shortcut icon" href="images/Gemini_Generated_Image_qz133hqz133hqz13.png" type="image/x-icon">
 </head>
 <body>
-    <header id="Accueil">
+    <header>
         <!--Premier navigateur-top-->
-        <div class="navtop">
-            <!--nav-top-Gauche-->
-            <div class="left">
-                <a href="#">Produits à 
-                    <img src="" alt="">
-                    <div class="nom_prix_btn">
-                        <h1></h1>
-                        <p></p>
-                        <button>Ajouter au panier</button>
-                    </div>uhait</a>    
-            </div>
-            <!--nav-top-Droite-->
-            <div class="right">
-                <div class="se_connecter">
-                    <i class="fa-solid fa-user"></i>
-                    <a href="connexion.html" target="_blank">Se Connecter</a>
-                </div>
-                <a href="#">Mon compte</a>
-                <a href="catalogue.html">Catalogues</a>
-                <a href="#">Produits co
-                    <img src="" alt="">
-                    <div class="nom_prix_btn">
-                        <h1></h1>
-                        <p></p>
-                        <button>Ajouter au panier</button>
-                    </div>
-                    <div class="devises">
-                            <select name="devise" id="devise">
-                                <option value="usd">USD</option>
-                                <option value="euro">EURO</option>
-                                <option value="cdf">CDF</option>
-                            </select>
-                    </div>
-                    <div class="langues">
-                        <select name="Langues" id="langue">
-                            <option value="anglais">Anglais</option>
-                            <option value="français">Français</option>
-                            <option value="lingala">Lingala</option>
-                            <option value="espagnol">Espagnol</option>
-                        </select>
-                    </div>
-                </form>
-            </div>
-        </div>
         <!--Navigateur principale-->
         <nav class="navigateur">
             <div class="logo">
@@ -81,17 +37,26 @@
                             <option value="Bol_à_mélanger">Bol à mélanger</option>
                             <option value="Maryse">Maryse</option>
                         </select>
+                        <div class="se_connecter" style="display: flex; gap:0.5rem;">
+                            <i class="fa-solid fa-user"></i>
+                            <a href="connexion.html" target="_blank">Profil</a>
+                        </div>
                     </form>
                 <a href="#contact">Contact</a>
                 <a href="#categories" >Categories<span class="nouveaux">Nouveaux</span></a>
             </div>
             <!--partie navigateur doite, bouttons-->
             <div class="btn-nav">
-                <div class="menu">
-                    <i class="fa-solid fa-bars"></i>
+                <div class="langues">
+                    <select name="Langues" id="langue">
+                        <option value="anglais">Anglais</option>
+                        <option value="français">Français</option>
+                        <option value="lingala">Lingala</option>
+                        <option value="espagnol">Espagnol</option>
+                    </select>
                 </div>
                 <div class="sun-btn">
-                    <i class="fa-solid fa-sun"></i>
+                    <i class="fa-solid fa-sun" id="dark_mode"></i>
                 </div>
                 <div class="heart">
                     <i class="fa-solid fa-heart"></i>
@@ -102,6 +67,37 @@
                 <div class="total">
                     <small>Total</small>
                     <p>$0.00</p>
+                </div>
+                <div class="menu">
+                    <i class="fa-solid fa-bars" id="menu_icon"></i>
+                    <div class="contents" id="links_menu">
+                        <div class="links">
+                            <a href="#" class="active">Accueil</a>
+                            <!--Combo box pour la selection-->
+                            <form action="">
+                                <select name="Ustensiles_de_découpe" id="ustensile_de_découpe">
+                                    <option value="Couteau_de_chef">Couteau de chef</option>
+                                    <option value="Couteau à pain">Couteau à pain</option>
+                                    <option value="Epulcheur">Epulcheur</option>
+                                    <option value="Presse-ail">Presse-ail</option>
+                                    <option value="Râpe">Râpe</option>
+                                </select>
+                                <select name="Préparation_et_melange" id="Préparation_et_melange">
+                                    <option value="Cuillière_en_bois">Cuillière en bois</option>
+                                    <option value="Spantule en silicon">Spantule en silicon</option>
+                                    <option value="Fouet_Manuel">Fouet Manuel</option>
+                                    <option value="Bol_à_mélanger">Bol à mélanger</option>
+                                    <option value="Maryse">Maryse</option>
+                                </select>
+                                <div class="se_connecter" style="display: flex; gap:0.5rem;">
+                                    <i class="fa-solid fa-user"></i>
+                                    <a href="connexion.html" target="_blank">Profil</a>
+                                </div>
+                            </form>
+                            <a href="#contact">Contact</a>
+                            <a href="#categories" >Categories<span class="nouveaux">Nouveaux</span></a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </nav>
@@ -306,7 +302,7 @@
                     <input type="email" id="Email" placeholder="Indiquer votre Adresse email" required>
                     <input type="text" placeholder="Entre Votre Numero de téléphone" required>
                     <textarea rows="7" cols="50" placeholder="Entrez un message"></textarea>
-                    <a href="">Envoyer</a>
+                    <a href="" id="envoyer">Envoyer</a>
                 </form>
             </div>
         </div>
@@ -373,7 +369,9 @@
     </div>
     <footer>
         &copy;Copyright-2025- Tous droits reservés- UTOPIA
+
     </footer>
+
+    <script src="script.js"></script>
 </body>
-<script src="Controleur/index.js"></script>
 </html>
