@@ -10,18 +10,17 @@
     menu_icon.addEventListener("click", ()=>{
         navlinks.classList.toggle('active')
     })
-    /*compteur automatique */
-const timer = setInterval(() => {
+    const timer = setInterval(() => {
     const now = new Date().getTime();
-    const eventDate = new Date("2025-07-10 00:00:00").getTime();
+    const eventDate = new Date("2025-07-17 00:00:00").getTime();
     const difference = eventDate - now;
 
     if (difference <= 0) {
       clearInterval(timer);
-      document.getElementById("days").innerText = "0"+"J";
-      document.getElementById("hours").innerText = "0"+"H";
-      document.getElementById("minutes").innerText = "0"+"M";
-      document.getElementById("seconde").innerText = "0"+"S";
+      document.getElementById("days").innerText = "0 J";
+      document.getElementById("hours").innerText = "0 H";
+      document.getElementById("minutes").innerText = "0 M";
+      document.getElementById("seconde").innerText = "0 S";
       return;
     }
 
@@ -35,4 +34,3 @@ const timer = setInterval(() => {
     document.getElementById("minutes").innerText = minutes + " M";
     document.getElementById("seconde").innerText = secondes + " S";
   }, 1000);
-
