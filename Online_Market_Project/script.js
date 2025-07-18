@@ -60,7 +60,7 @@ const interval = setInterval(() => {
     document.getElementById("days").innerText = "0";
     document.getElementById("hours").innerText = "00";
     document.getElementById("minutes").innerText = "00";
-    document.getElementById("seconde").innerText = "00"; // ✅ ici aussi
+    document.getElementById("seconde").innerText = "00"; // 
     return;
   }
 
