@@ -10,27 +10,72 @@
     menu_icon.addEventListener("click", ()=>{
         navlinks.classList.toggle('active')
     })
-    const timer = setInterval(() => {
-    const now = new Date().getTime();
-    const eventDate = new Date("2025-07-17 00:00:00").getTime();
-    const difference = eventDate - now;
+    /**compteur experience */
+const counters = document.getElementsByClassName("counter");
 
-    if (difference <= 0) {
-      clearInterval(timer);
-      document.getElementById("days").innerText = "0 J";
-      document.getElementById("hours").innerText = "0 H";
-      document.getElementById("minutes").innerText = "0 M";
-      document.getElementById("seconde").innerText = "0 S";
-      return;
-    }
+Array.from(counters).forEach(counter => {
+    counter.innerText = '+0';
 
-    const jours = Math.floor(difference / (1000 * 60 * 60 * 24));
-    const heures = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
-    const secondes = Math.floor((difference % (1000 * 60)) / 1000);
+    const update = () => {
+        const target = +counter.getAttribute('data-target');
+        const current = +counter.innerText.replace('+', '');
+        const increment = Math.ceil(target / 300); // 🐢 Plus le diviseur est grand, plus c'est lent
 
-    document.getElementById("days").innerText = jours + " J";
-    document.getElementById("hours").innerText = heures + " H";
-    document.getElementById("minutes").innerText = minutes + " M";
-    document.getElementById("seconde").innerText = secondes + " S";
-  }, 1000);
+        if (current < target) {
+            const newValue = current + increment;
+            counter.innerText = `+${newValue > target ? target : newValue}`;
+            setTimeout(update, 10); // 🕒 Vitesse (ms)
+        } else {
+            counter.innerText = `+${target}`; // S'assurer que le bon nombre s'affiche
+        }
+    };
+
+    update();
+});
+/*compteur promotion*/
+function getNextSunday() {
+  const now = new Date();
+  const day = now.getDay(); // 0 = ce dimanche
+  const diff = (7 - day) % 7;
+
+  const sunday = new Date(now);
+  if (diff === 0 && now.getHours() < 23) {
+    sunday.setDate(sunday.getDate());
+  } else {
+    sunday.setDate(sunday.getDate() + diff);
+  }
+
+  sunday.setHours(23, 59, 59, 999);
+  return sunday.getTime();
+}
+
+const countdownDate = getNextSunday();
+
+const interval = setInterval(() => {
+  const now = new Date().getTime();
+  const distance = countdownDate - now;
+
+  if (distance < 0) {
+    clearInterval(interval);
+    document.getElementById("days").innerText = "0";
+    document.getElementById("hours").innerText = "00";
+    document.getElementById("minutes").innerText = "00";
+    document.getElementById("seconde").innerText = "00"; // ✅ ici aussi
+    return;
+  }
+
+  const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  const secondes = Math.floor((distance % (1000 * 60)) / 1000);
+
+  document.getElementById("days").innerText = days;
+  document.getElementById("hours").innerText = String(hours).padStart(2, '0');
+  document.getElementById("minutes").innerText = String(minutes).padStart(2, '0');
+  document.getElementById("seconde").innerText = String(secondes).padStart(2, '0'); // ✅ attention au nom
+}, 1000);
+
+
+
+
+    

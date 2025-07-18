@@ -568,6 +568,32 @@ gap: 0.5rem;
     color:var(--bg2);
     font-weight: 550;
 }
+#experience{
+    text-align: center;
+    position: relative;
+    top: 2.9rem;
+}
+.counter-container{
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(250px, 1fr));
+    gap: 1rem;
+    margin: 0 2rem;
+    padding: min(4rem);
+    text-align: center;
+    border-radius: 10px;
+    border:rgb(134, 134, 201) 2px solid;
+}
+.counter-container .counter h2{
+    position: relative;
+    bottom: 1.5rem;
+}
+.counter-container .counter_box1,.counter_box2, .counter_box3 {
+    background:rgba(134, 134, 201, 0.463);
+    padding: min(1.5rem, 8%);
+    border-radius: 10%;
+    box-shadow: 3px 3px 8px rgb(134, 134, 201);;
+}
+
 .contact-box{
     display: flex;
     justify-content: center;

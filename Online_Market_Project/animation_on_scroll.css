@@ -1,0 +1,9 @@
+.offre_special{
+    opacity: 0;
+    transform: translateY(80px);
+    transition: all 0.8s ease;
+}
+.offre_special .vue{
+    opacity: 1;
+    transform: translateY(0);
+}
