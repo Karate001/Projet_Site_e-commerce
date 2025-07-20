@@ -73,6 +73,19 @@ document.addEventListener('DOMContentLoaded',
 });
 }
 
+<<<<<<< Updated upstream
+=======
+
+    table_produits_dom.forEach(produit => {
+    const img_produit=produit.querySelectorAll('img')
+    img_produit.forEach(img => {
+        img.addEventListener("click",vers_info_prod)
+    });
+    
+});
+}
+
+>>>>>>> Stashed changes
 }
  
  /*Quend on clique sur un produit page qui contient tous le les info 
