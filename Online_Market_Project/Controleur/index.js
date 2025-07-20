@@ -2,9 +2,13 @@
 let div_produit= document.getElementById("produits")
 if(div_produit){
 var table_produits_dom= Array.from(div_produit.children)
-}
 
-    /*
+
+//Déclaration de la page acceuil
+const page_acceuil= document.title;
+if (page_acceuil=="UTOPIA MARKET") {
+
+   /*
     //Méthode pour supprimer un produit
     fetch("http://localhost:8080/info_produit/produits/36",{
           method:"DELETE"  
@@ -59,13 +63,29 @@ document.addEventListener('DOMContentLoaded',
     })
    
     );
+    console.log(table_produits_dom)
+    table_produits_dom.forEach(produit => {
+    const img_produit=produit.querySelectorAll('img')
+    img_produit.forEach(img => {
+        img.addEventListener("click",vers_info_prod)
+    });
+    
+});
+}
 
+}
+ 
  /*Quend on clique sur un produit page qui contient tous le les info 
                 sur un produit et le bouton commander*/
-function vers_info_prod() {
-    table_produits_dom.forEach(p => {
-        
-    });
+function vers_info_prod(event) {
+    
+    prod= event.target.parentElement;
+    img_prod= prod.querySelector("img")
+    nom_prod= prod.querySelector("h1")
+    prix_prod= prod.querySelector("p");
+
+    window.location.href= `page_info_produit.html?nom=${nom_prod.innerText}&prix=${prix_prod.innerText}&url_image=${img_prod.src}`;
+
 }
 
 
