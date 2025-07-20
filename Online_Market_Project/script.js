@@ -19,14 +19,14 @@ Array.from(counters).forEach(counter => {
     const update = () => {
         const target = +counter.getAttribute('data-target');
         const current = +counter.innerText.replace('+', '');
-        const increment = Math.ceil(target / 300); // 🐢 Plus le diviseur est grand, plus c'est lent
+        const increment = Math.ceil(target / 300); 
 
         if (current < target) {
             const newValue = current + increment;
             counter.innerText = `+${newValue > target ? target : newValue}`;
-            setTimeout(update, 10); // 🕒 Vitesse (ms)
+            setTimeout(update, 10); 
         } else {
-            counter.innerText = `+${target}`; // S'assurer que le bon nombre s'affiche
+            counter.innerText = `+${target}`; 
         }
     };
 
@@ -36,7 +36,7 @@ Array.from(counters).forEach(counter => {
 function getNextSunday() {
   const now = new Date();
   const day = now.getDay(); // 0 = ce dimanche
-  const diff = (7 - day) % 7;
+  const diff = (1 - day) % 7;
 
   const sunday = new Date(now);
   if (diff === 0 && now.getHours() < 23) {
