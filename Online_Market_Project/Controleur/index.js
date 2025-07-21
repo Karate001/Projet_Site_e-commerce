@@ -65,17 +65,22 @@ document.addEventListener('DOMContentLoaded',
     );
 
     table_produits_dom.forEach(produit => {
-    const img_produit=produit.querySelectorAll('img')
-    img_produit.forEach(img => {
-        img.addEventListener("click",vers_info_prod)
+        const img_produit=produit.querySelectorAll('img')
+        const btn_add_to_cart=document.querySelectorAll('button')
+        img_produit.forEach(img => {
+            img.addEventListener("click",vers_info_prod)
+        });   
+
+        btn_add_to_cart.forEach(btn => {
+            btn.addEventListener("click",ajout_prod_panier)
+        });   
     });
-    
-});
+
 }
 
 }
  
- /*Quend on clique sur un produit page qui contient tous le les info 
+ /*Quand on clique sur un produit page qui contient tous le les info 
                 sur un produit et le bouton commander*/
 function vers_info_prod(event) {
     
@@ -88,6 +93,15 @@ function vers_info_prod(event) {
 
 }
 
+//Ajout du produit au panier
+let panier=[];
+container_panier= document.getElementsByClassName('container_panier');console.log(container_panier)
+function ajout_prod_panier(event){
+    prod= event.target.parentElement.parentElement;
+    panier.push({img_prod:prod.querySelector('img').src,nom_prod:prod.querySelector('h1').innerText,prix_prod:prod.querySelector('p').innerText});
+    
+
+}
 
     //Méthode qui ajoute un produit
 /*
