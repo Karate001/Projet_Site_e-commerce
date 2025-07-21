@@ -95,11 +95,21 @@ function vers_info_prod(event) {
 
 //Ajout du produit au panier
 let panier=[];
-container_panier= document.getElementsByClassName('container_panier');console.log(container_panier)
+
 function ajout_prod_panier(event){
     prod= event.target.parentElement.parentElement;
-    panier.push({img_prod:prod.querySelector('img').src,nom_prod:prod.querySelector('h1').innerText,prix_prod:prod.querySelector('p').innerText});
+    img_prod=prod.querySelector('img').src;
+    nom_prod=prod.querySelector('h1').innerText;
+    prix_prod=prod.querySelector('p').innerText;
     
+    panier.push({img_prod,nom_prod,prix_prod});
+    
+    container_panier= document.getElementById('container_panier');
+
+    panier.forEach(item=>{
+    container_panier.innerHTML+=`<img src="${img_prod}" alt="">
+                                <p>${nom_prod}:${prix_prod}</p>`
+    })
 
 }
 
