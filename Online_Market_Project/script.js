@@ -36,7 +36,7 @@ Array.from(counters).forEach(counter => {
 function getNextSunday() {
   const now = new Date();
   const day = now.getDay(); // 0 = ce dimanche
-  const diff = (1 - day) % 7;
+  const diff = (2 - day) % 7;
 
   const sunday = new Date(now);
   if (diff === 0 && now.getHours() < 23) {
