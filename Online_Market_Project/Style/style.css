@@ -163,7 +163,7 @@ nav .links a form select{
     }
     /*section after pour ajouter les produits*/
     .cart-shopping i::after{
-        content: '0';
+        content: attr(data-compteur);
         position: absolute;
         right: 0.5rem;
         bottom: 0.9rem;
@@ -1088,4 +1088,26 @@ footer{
 #prod img {
     width: 30%;
     height: auto;
+}
+/*Style du panier*/
+#container_panier{
+    width: 50%;
+    margin-left: 45%;
+    margin-right: 5%;
+    display: none;
+    background-color: gray;
+    visibility: hidden;
+    margin-bottom: -90%;
+}
+
+#container_panier ul li{
+    margin-left: 2.5%;
+    margin-right:2.5% ;
+    display: flex;
+    border: solid rgb(134, 134, 201) 3px;
+    margin-top: 3px;
+}
+.display_flex_du_panier_li ul li{display: flex;}
+#container_panier ul li img{
+    width: 10%;
 }

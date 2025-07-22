@@ -66,11 +66,12 @@ document.addEventListener('DOMContentLoaded',
 
     table_produits_dom.forEach(produit => {
         const img_produit=produit.querySelectorAll('img')
-        const btn_add_to_cart=document.querySelectorAll('button')
+        const btn_add_to_cart=produit.querySelectorAll('button')
+        
         img_produit.forEach(img => {
             img.addEventListener("click",vers_info_prod)
         });   
-
+        
         btn_add_to_cart.forEach(btn => {
             btn.addEventListener("click",ajout_prod_panier)
         });   
@@ -95,24 +96,48 @@ function vers_info_prod(event) {
 
 //Ajout du produit au panier
 let panier=[];
+let compteur_panier=0;
+element_compteur = document.querySelector('.cart-shopping i');
 
 function ajout_prod_panier(event){
-    prod= event.target.parentElement.parentElement;
+    event.preventDefault()
+    prod= event.target.parentElement.closest("#prod");
+    
     img_prod=prod.querySelector('img').src;
     nom_prod=prod.querySelector('h1').innerText;
     prix_prod=prod.querySelector('p').innerText;
     
     panier.push({img_prod,nom_prod,prix_prod});
     
-    container_panier= document.getElementById('container_panier');
-
-    panier.forEach(item=>{
-    container_panier.innerHTML+=`<img src="${img_prod}" alt="">
-                                <p>${nom_prod}:${prix_prod}</p>`
-    })
-
+    container_panier= document.querySelector('#container_panier ul');
+    prod_li= document.createElement('li');
+    
+    
+    prod_li.innerHTML +=`<img src="${img_prod}" alt="">
+                         <p>${nom_prod}:${prix_prod}</p>
+                         <button><i class="fa fa-trash" aria-hidden="true"></i></button>`;
+        
+    
+    container_panier.appendChild(prod_li);
+    compteur_panier++;
+    element_compteur.setAttribute("data-compteur",compteur_panier);
+    localStorage.setItem("panier", JSON.stringify(panier));
+    localStorage.setItem("compteur_panier",compteur_panier);
 }
 
+//fonction qui affiche le panier ou le rend invisible
+const icone_panier= document.querySelector('.cart-shopping');
+const element_panier= document.querySelector('#container_panier');
+icone_panier.addEventListener('click',afficher_panier)
+function afficher_panier(){
+    if (element_panier.style.display!="block"&&element_panier.style.visibility!="visible") {
+        element_panier.style.display="block";
+        element_panier.style.visibility="visible";
+    }else{
+        element_panier.style.display="none";
+        element_panier.style.visibility="hidden";
+    }
+}
     //Méthode qui ajoute un produit
 /*
 fetch("http://localhost:8080/info_produit/produits", {
