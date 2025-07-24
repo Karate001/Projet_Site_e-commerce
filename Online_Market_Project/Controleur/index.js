@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded',
 
     table_produits_dom.forEach(produit => {
         const img_produit=produit.querySelectorAll('img')
-        const btn_add_to_cart=produit.querySelectorAll('button')
+        btn_add_to_cart=produit.querySelectorAll('button')
         
         img_produit.forEach(img => {
             img.addEventListener("click",vers_info_prod)
@@ -98,6 +98,7 @@ function vers_info_prod(event) {
 let panier=[];
 let compteur_panier=0;
 element_compteur = document.querySelector('.cart-shopping i');
+container_panier= document.querySelector('#container_panier ul');
 
 function ajout_prod_panier(event){
     event.preventDefault()
@@ -107,8 +108,14 @@ function ajout_prod_panier(event){
     nom_prod=prod.querySelector('h1').innerText;
     prix_prod=prod.querySelector('p').innerText;
     
-    panier.push({img_prod,nom_prod,prix_prod});
-    
+    for (let i = 0; i <= panier.length; i++) {
+        const element = panier[i];
+        if (panier.length!=0) {
+            if (img_prod==panier[i].querySelector('img').src) {
+                break;
+            }else{}   
+        }
+    }
     container_panier= document.querySelector('#container_panier ul');
     prod_li= document.createElement('li');
     
@@ -117,12 +124,18 @@ function ajout_prod_panier(event){
                          <p>${nom_prod}:${prix_prod}</p>
                          <button><i class="fa fa-trash" aria-hidden="true"></i></button>`;
         
-    
+    panier.push({prod_li});
+
     container_panier.appendChild(prod_li);
     compteur_panier++;
     element_compteur.setAttribute("data-compteur",compteur_panier);
     localStorage.setItem("panier", JSON.stringify(panier));
     localStorage.setItem("compteur_panier",compteur_panier);
+
+    //Gérer la suppression de produit du panier
+    btn_delete_prod= prod_li.querySelector('button');
+    btn_delete_prod.addEventListener('click',effacer_prod_panier);
+
 }
 
 //fonction qui affiche le panier ou le rend invisible
@@ -133,11 +146,39 @@ function afficher_panier(){
     if (element_panier.style.display!="block"&&element_panier.style.visibility!="visible") {
         element_panier.style.display="block";
         element_panier.style.visibility="visible";
+        //Le bouton commander
+        if (panier.length===0) {
+           
+                btn_consulter_prod= document.createElement("button");
+                btn_consulter_prod.innerHTML=`<a href="index.html#produits">Consultez nos produits</a>`;
+                element_panier.appendChild(btn_consulter_prod);
+            
+            if(btn_commander){element_panier.removeChild(btn_commander)}
+        }if (panier.length>0) {
+            btn_commander= document.createElement('button');
+            btn_commander.innerText="Commander";
+            element_panier.appendChild(btn_commander);
+            if(btn_consulter_prod){element_panier.removeChild(btn_consulter_prod)}
+        }
     }else{
         element_panier.style.display="none";
         element_panier.style.visibility="hidden";
     }
 }
+
+//Fonction pour suppprimer produit
+function effacer_prod_panier(event) {
+    event.preventDefault;
+    prod_a_supprimer= event.target.closest("li");
+    container_panier.removeChild(prod_a_supprimer);
+    panier.pop(prod_a_supprimer);
+    compteur_panier--;
+    element_compteur.setAttribute("data-compteur",compteur_panier);
+}
+
+
+
+
     //Méthode qui ajoute un produit
 /*
 fetch("http://localhost:8080/info_produit/produits", {
